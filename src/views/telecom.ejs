@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sometype+Mono:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            font-size: 15px;
+            line-height: 1.2em;
+            padding: 1px;
+            /* padding para o outline da etiqueta */
+        }
+
+        .page-break {
+            page-break-after: always;
+            margin: 0;
+            padding: 0;
+            height: 0;
+        }
+
+        .box-pagina {
+            white-space: nowrap;
+            line-height: 0;
+        }
+
+        .box-etiqueta {
+            white-space: normal;
+            line-height: 1.2em;
+            box-shadow: 0 0 0 1px #ddd;
+            border-radius: 3px;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            display: inline-block;
+            word-break: break-word;
+        }
+
+        .elm-etiqueta {
+            position: absolute;
+            overflow: hidden;
+        }
+
+        .elm-etiqueta.align-center {
+            transform: translateX(-50%);
+            left: 50%;
+        }
+
+        .sometype-mono {
+            font-family: "Sometype Mono", monospace;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+        }
+
+        .odd {
+            margin-left: 0.3cm;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+            }
+
+            .box-etiqueta {
+                border: none !important;
+                box-shadow: none !important;
+                background-color: unset;
+            }
+
+            .info-pagina {
+                display: none;
+            }
+        }
+    </style>
+    <title>Etiquetas</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <% pages.forEach((page)=> { %>
+        <div class="box-pagina" style="width: 10.8cm; height: auto; padding-top: 0cm; padding-left: 0.5cm;">
+            <div class="box-etiqueta" style="width: 5cm; height: 3cm; font-size: 8pt;">
+                <div class="elm-etiqueta align-center" ref="logoEmpresa" style="top: 0.3cm; width: 4cm; height: auto;">
+                    <img width="100%" src="/images/EdiMelo_Nossa_Horizontal.png" alt="">
+                </div>
+                <div class="elm-etiqueta align-center" ref="text" style="top: 1.85cm; width: 4.4cm; height: auto;">
+                    <span>
+                        <div style="text-align: center; font-size: 8pt; margin-bottom: 0.1cm">
+                            Patrimônio N.º
+                        </div>
+                        <div class="sometype-mono" style="text-align: center; font-size: 12pt">
+                            <%= page.one; %>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="box-etiqueta odd" style="width: 5cm; height: 3cm; font-size: 8pt;">
+                <div class="elm-etiqueta align-center" ref="logoEmpresa" style="top: 0.3cm; width: 4cm; height: auto;">
+                    <img width="100%" src="/images/EdiMelo_Nossa_Horizontal.png" alt="">
+                </div>
+                <div class="elm-etiqueta align-center" ref="text" style="top: 1.85cm; width: 4.4cm; height: auto;">
+                    <span>
+                        <div style="text-align: center; font-size: 8pt; margin-bottom: 0.1cm">
+                            Patrimônio N.º
+                        </div>
+                        <div class="sometype-mono" style="text-align: center; font-size: 12pt">
+                            <%= page.two; %>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <p class="page-break"></p>
+        <% });%>
+</body>
+
+</html>
