@@ -1,5 +1,4 @@
 import express, { json, urlencoded } from 'express';
-import cors from 'cors';
 
 const port = 8080;
 const app = express();
